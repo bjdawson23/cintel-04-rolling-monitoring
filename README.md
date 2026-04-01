@@ -30,12 +30,40 @@ and make small modifications to understand
 how rolling windows help smooth short-term variation and
 reveal trends in time-series data.
 
-Phase 4 change:  Added ROLLING ERROR RATE (PERCENTAGE)
-  rolling_error_rate_pct = (rolling_errors / rolling_requests) * 100
-  Expresses the percentage of requests that resulted in an error
-  over the rolling window. 0% = no errors; 100% = all requests failed.
+Phase 5 Custom Project:
 
-## Data
+1. **System Metrics (Dawson):** Added ROLLING ERROR RATE (PERCENTAGE)
+   - rolling_error_rate_pct = (rolling_errors / rolling_requests) * 100
+   - Expresses the percentage of requests that resulted in an error over the rolling window
+   - 0% = no errors; 100% = all requests failed
+   - Displayed in logs with 2 decimal place precision
+
+2. **Air Quality (Kansas City 2023):** Added rolling metrics pipeline and visualization
+   - **Dataset:** `data/kc_air_co_data_2023.csv` (148 daily observations)
+   - **Rolling Metrics:** 30-day rolling CO mean and 30-day rolling AQI mean
+   - **Pipeline:** `src/cintel/rolling_monitor_dawson_air_quality.py`
+   - **Visualization:** `src/cintel/visualize_air_quality.py`
+   - **Outputs:** CSV artifact + dual-axis charts (PNG + interactive HTML)
+   - Key insight: CO and AQI trends track closely; Feb-Mar 2023 showed peak degradation
+
+## Air Quality Analysis - Quick Start
+
+Run the air quality rolling metrics pipeline and visualization:
+
+```bash
+# Generate 30-day rolling metrics (CO and AQI)
+uv run python -m cintel.rolling_monitor_dawson_air_quality
+
+# Create visualization charts
+uv run python -m cintel.visualize_air_quality
+```
+
+Outputs:
+
+- **Metrics CSV:** `artifacts/air_quality_rolling_metrics.csv` (with `co_rolling_30d_mean` and `aqi_rolling_30d_mean`)
+- **Static Chart:** `artifacts/air_quality_rolling_chart.png`
+
+---
 
 The example pipeline reads time-series system metrics from:
 
