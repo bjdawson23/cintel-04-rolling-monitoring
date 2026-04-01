@@ -68,17 +68,20 @@ Two 30-day rolling metrics were computed to smooth daily variation and reveal tr
 #### Visualization
 
 A dual-axis line chart displays both metrics together:
+
 - **Blue line (left Y-axis):** 30-day rolling CO mean (ppm)
 - **Orange line (right Y-axis):** 30-day rolling AQI mean
 - **X-axis:** The listed months of 2023 labeled
 
 Outputs:
+
 - Static PNG: `artifacts/air_quality_rolling_chart.png` (300 dpi, high resolution)
 - Interactive HTML: `artifacts/air_quality_rolling_chart.html` (zoomable, hover tooltips)
 
 #### Code
 
 **Pipeline script:** `src/cintel/rolling_monitor_dawson_air_quality.py`
+
 - Reads air quality CSV
 - Parses and sorts by date
 - Computes 30-day rolling means for CO and AQI
@@ -101,7 +104,8 @@ uv run python -m cintel.visualize_air_quality
 
 ### Interpretation
 
-
-(Describe what this means for your system - provide the business intelligence you gained)
+- This will help my system detect changes in air quality looking at a 30 day rolling window.
+- The two metrics track together closely, indicating that CO concentration is a strong driver of the overall AQI.
+- Feb-Mar 2023 showed peak degradation.
 
 ---
