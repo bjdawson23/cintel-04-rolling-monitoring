@@ -48,11 +48,11 @@ Phase 5 Custom Project:
 - **Pipeline:** `src/cintel/rolling_monitor_dawson_air_quality.py`
 - **Visualization:** `src/cintel/visualize_air_quality.py`
   - Static PNG: `artifacts/air_quality_rolling_chart.png`
-      ![Air_Quality_Rolling_Chart](../artifacts/air_quality_rolling_chart.png)
+      ![Air_Quality_Rolling_Chart](artifacts/air_quality_rolling_chart.png)
   - CO Heatmap: `artifacts/air_quality_co_heatmap.png`
-      ![CO_heatmap](../artifacts/air_quality_co_heatmap.png)
+      ![CO_heatmap](artifacts/air_quality_co_heatmap.png)
   - AQI Heatmap: `artifacts/air_quality_aqi_heatmap.png`
-      ![AQI_heatmap](../artifacts/air_quality_aqi_heatmap.png)
+      ![AQI_heatmap](artifacts/air_quality_aqi_heatmap.png)
 - Key insight: CO and AQI trends track closely; Feb-Mar 2023 showed peak degradation
 
 ## Air Quality Analysis - Quick Start
