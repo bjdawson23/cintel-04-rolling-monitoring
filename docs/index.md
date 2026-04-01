@@ -77,8 +77,7 @@ Two 30-day rolling metrics were computed to smooth daily variation and reveal tr
 - Outputs: `artifacts/air_quality_rolling_metrics.csv`
 
 #### Visualization
-
-**Visual script:** `src/cintel/cintel.visualize_air_quality`
+**Visualization script:** `src/cintel/visualize_air_quality.py`
 
 - Reads the rolling metrics artifact
 - Generates dual-axis matplotlib chart (PNG)
@@ -92,9 +91,6 @@ A dual-axis line chart displays both metrics together:
 Outputs:
 
 - Static PNG: `artifacts/air_quality_rolling_chart.png`
-![Air_Quality_Chart](../artifacts/air_quality_rolling_chart.png)
-
-**Visualization script:** `src/cintel/visualize_air_quality.py`
 ![Air_Quality_Rolling_Chart](../artifacts/air_quality_rolling_chart.png)
 ![CO_heatmap](../artifacts/air_quality_co_heatmap.png)
 ![AQI_heatmap](../artifacts/air_quality_aqi_heatmap.png)
