@@ -30,6 +30,11 @@ and make small modifications to understand
 how rolling windows help smooth short-term variation and
 reveal trends in time-series data.
 
+Phase 4 change:  Added ROLLING ERROR RATE (PERCENTAGE)
+  rolling_error_rate_pct = (rolling_errors / rolling_requests) * 100
+  Expresses the percentage of requests that resulted in an error
+  over the rolling window. 0% = no errors; 100% = all requests failed.
+
 ## Data
 
 The example pipeline reads time-series system metrics from:
@@ -113,6 +118,7 @@ git add -A
 uvx pre-commit run --all-files
 
 uv run python -m cintel.rolling_monitor_case
+uv run python -m cintel.rolling_monitor_dawson
 
 uv run ruff format .
 uv run ruff check . --fix

@@ -30,12 +30,12 @@ Questions to Consider
 
 Paths (relative to repo root)
 
-    INPUT FILE: data/system_metrics_timeseries_case.csv
-    OUTPUT FILE: artifacts/rolling_metrics_case.csv
+    INPUT FILE: data/system_metrics_timeseries_dawson.csv
+    OUTPUT FILE: artifacts/rolling_metrics_dawson.csv
 
 Terminal command to run this file from the root project folder
 
-    uv run python -m cintel.rolling_monitor_case
+    uv run python -m cintel.rolling_monitor_dawson
 
 OBS:
   Don't edit this file - it should remain a working example.
@@ -62,8 +62,8 @@ ROOT_DIR: Final[Path] = Path.cwd()
 DATA_DIR: Final[Path] = ROOT_DIR / "data"
 ARTIFACTS_DIR: Final[Path] = ROOT_DIR / "artifacts"
 
-DATA_FILE: Final[Path] = DATA_DIR / "system_metrics_timeseries_case.csv"
-OUTPUT_FILE: Final[Path] = ARTIFACTS_DIR / "rolling_metrics_case.csv"
+DATA_FILE: Final[Path] = DATA_DIR / "system_metrics_timeseries_dawson.csv"
+OUTPUT_FILE: Final[Path] = ARTIFACTS_DIR / "rolling_metrics_dawson.csv"
 
 # === DEFINE THE MAIN FUNCTION ===
 
@@ -156,6 +156,28 @@ def main() -> None:
     )
 
     LOG.info("Computed rolling mean signals")
+
+    # ----------------------------------------------------
+    # STEP 3.5: COMPUTE ROLLING ERROR RATE (PERCENTAGE)
+    # ----------------------------------------------------
+    # rolling_error_rate_pct = (rolling_errors / rolling_requests) * 100
+    # Expresses the percentage of requests that resulted in an error
+    # over the rolling window. 0% = no errors; 100% = all requests failed.
+    df_with_rolling = df_with_rolling.with_columns(
+        [
+            (pl.col("errors_rolling_mean") / pl.col("requests_rolling_mean") * 100.0)
+            .round(2)
+            .alias("rolling_error_rate_pct")
+        ]
+    )
+
+    LOG.info("Computed rolling error rate percentage")
+    LOG.info(
+        "\n"
+        + str(
+            df_with_rolling.select(["timestamp", "rolling_error_rate_pct"]).drop_nulls()
+        )
+    )
 
     # ----------------------------------------------------
     # STEP 4: SAVE RESULTS AS AN ARTIFACT
