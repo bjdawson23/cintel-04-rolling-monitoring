@@ -76,7 +76,7 @@ A dual-axis line chart displays both metrics together:
 Outputs:
 
 - Static PNG: `artifacts/air_quality_rolling_chart.png` (300 dpi, high resolution)
-- Interactive HTML: `artifacts/air_quality_rolling_chart.html` (zoomable, hover tooltips)
+![Air_Quality_Chart](../artifacts/air_quality_rolling_chart.png)
 
 #### Code
 
