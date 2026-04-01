@@ -42,8 +42,7 @@ Phase 5 Custom Project:
    - **Dataset:** `data/kc_air_co_data_2023.csv` (148 daily observations)
    - **Rolling Metrics:** 30-day rolling CO mean and 30-day rolling AQI mean
    - **Pipeline:** `src/cintel/rolling_monitor_dawson_air_quality.py`
-   - **Visualization:** `src/cintel/visualize_air_quality.py`
-   - **Outputs:** CSV artifact + dual-axis charts (PNG + interactive HTML)
+   - **Visualization:** `src/cintel/visualize_air_quality.py`  ![VISUAL](artifacts/air_quality_rolling_chart.png)
    - Key insight: CO and AQI trends track closely; Feb-Mar 2023 showed peak degradation
 
 ## Air Quality Analysis - Quick Start
