@@ -32,24 +32,28 @@ reveal trends in time-series data.
 
 Phase 4 Modification:
 
-1. **System Metrics (Dawson):** Added ROLLING ERROR RATE (PERCENTAGE)
-   - rolling_error_rate_pct = (rolling_errors / rolling_requests) * 100
-   - Expresses the percentage of requests that resulted in an error over the rolling window
-   - 0% = no errors; 100% = all requests failed
-   - Displayed in logs with 2 decimal place precision
+**System Metrics (Dawson):** Added ROLLING ERROR RATE (PERCENTAGE)
+
+- rolling_error_rate_pct = (rolling_errors / rolling_requests) * 100
+- Expresses the percentage of requests that resulted in an error over the rolling window
+- 0% = no errors; 100% = all requests failed
+- Displayed in logs with 2 decimal place precision
 
 Phase 5 Custom Project:
 
-2. **Air Quality (Kansas City 2023):** Added rolling metrics pipeline and visualization
-   - **Dataset:** `data/kc_air_co_data_2023.csv` (148 daily observations)
-   - **Rolling Metrics:** 30-day rolling CO mean and 30-day rolling AQI mean
-   - **Pipeline:** `src/cintel/rolling_monitor_dawson_air_quality.py`
-   - **Visualization:** `src/cintel/visualize_air_quality.py`
-   - ![Air_Quality_Rolling_Chart](../artifacts/air_quality_rolling_chart.png)
-   - ![CO_heatmap](../artifacts/air_quality_co_heatmap.png)
-   - ![AQI_heatmap](../artifacts/air_quality_aqi_heatmap.png)
+**Air Quality (Kansas City 2023):** Added rolling metrics pipeline and visualization
 
-   - Key insight: CO and AQI trends track closely; Feb-Mar 2023 showed peak degradation
+- **Dataset:** `data/kc_air_co_data_2023.csv` (148 daily observations)
+- **Rolling Metrics:** 30-day rolling CO mean and 30-day rolling AQI mean
+- **Pipeline:** `src/cintel/rolling_monitor_dawson_air_quality.py`
+- **Visualization:** `src/cintel/visualize_air_quality.py`
+  - Static PNG: `artifacts/air_quality_rolling_chart.png`
+      ![Air_Quality_Rolling_Chart](../artifacts/air_quality_rolling_chart.png)
+  - CO Heatmap: `artifacts/air_quality_co_heatmap.png`
+      ![CO_heatmap](../artifacts/air_quality_co_heatmap.png)
+  - AQI Heatmap: `artifacts/air_quality_aqi_heatmap.png`
+      ![AQI_heatmap](../artifacts/air_quality_aqi_heatmap.png)
+- Key insight: CO and AQI trends track closely; Feb-Mar 2023 showed peak degradation
 
 ## Air Quality Analysis - Quick Start
 
