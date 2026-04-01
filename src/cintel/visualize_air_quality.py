@@ -10,13 +10,15 @@ Purpose
 - Create a dual-axis line chart showing:
   - 30-day rolling CO concentration (ppm) on left Y-axis
   - 30-day rolling AQI mean on right Y-axis
-- Save the visualization as an HTML file and a PNG.
+- Save the visualizations as PNG files.
 
 Paths (relative to repo root)
 
     INPUT FILE: artifacts/air_quality_rolling_metrics.csv
     OUTPUT FILES:
-      - artifacts/air_quality_rolling_chart.png (static image)
+    - artifacts/air_quality_rolling_chart.png (line chart)
+    - artifacts/air_quality_co_heatmap.png (CO monthly heatmap)
+    - artifacts/air_quality_aqi_heatmap.png (AQI monthly heatmap)
 
 Terminal command to run this file from the root project folder
 
@@ -46,7 +48,8 @@ ARTIFACTS_DIR: Final[Path] = ROOT_DIR / "artifacts"
 
 INPUT_FILE: Final[Path] = ARTIFACTS_DIR / "air_quality_rolling_metrics.csv"
 OUTPUT_PNG: Final[Path] = ARTIFACTS_DIR / "air_quality_rolling_chart.png"
-OUTPUT_HTML: Final[Path] = ARTIFACTS_DIR / "air_quality_rolling_chart.html"
+OUTPUT_CO_HEATMAP_PNG: Final[Path] = ARTIFACTS_DIR / "air_quality_co_heatmap.png"
+OUTPUT_AQI_HEATMAP_PNG: Final[Path] = ARTIFACTS_DIR / "air_quality_aqi_heatmap.png"
 
 # === DEFINE THE MAIN FUNCTION ===
 
@@ -62,7 +65,8 @@ def main() -> None:
     log_path(LOG, "ROOT_DIR", ROOT_DIR)
     log_path(LOG, "INPUT_FILE", INPUT_FILE)
     log_path(LOG, "OUTPUT_PNG", OUTPUT_PNG)
-    log_path(LOG, "OUTPUT_HTML", OUTPUT_HTML)
+    log_path(LOG, "OUTPUT_CO_HEATMAP_PNG", OUTPUT_CO_HEATMAP_PNG)
+    log_path(LOG, "OUTPUT_AQI_HEATMAP_PNG", OUTPUT_AQI_HEATMAP_PNG)
 
     # Ensure artifacts directory exists
     ARTIFACTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -149,64 +153,54 @@ def main() -> None:
     LOG.info(f"Saved PNG visualization: {OUTPUT_PNG}")
 
     # ============================================================
-    # STEP 5: SAVE AS INTERACTIVE HTML (PLOTLY)
+    # STEP 5: CREATE MONTHLY HEATMAP CHARTS
     # ============================================================
-    try:
-        import plotly.graph_objects as go
+    # Aggregate daily rolling metrics to monthly means for compact
+    # month-by-month heatmap views.
+    plot_df = pd.DataFrame(
+        {
+            "Date": dates,
+            "co_rolling_30d_mean": co_values,
+            "aqi_rolling_30d_mean": aqi_values,
+        }
+    )
 
-        fig_plotly = go.Figure()
+    monthly_df = (
+        plot_df.groupby(plot_df["Date"].dt.to_period("M"))[
+            ["co_rolling_30d_mean", "aqi_rolling_30d_mean"]
+        ]
+        .mean()
+        .reset_index()
+    )
+    monthly_df["Date"] = monthly_df["Date"].astype(str)
 
-        # Add CO trace
-        fig_plotly.add_trace(
-            go.Scatter(
-                x=dates,
-                y=co_values,
-                name="CO Conc. - 30d Mean (ppm)",
-                line=dict(color="#1f77b4", width=2.5),
-                yaxis="y1",
-            )
-        )
+    # CO heatmap
+    co_heatmap_values = monthly_df[["co_rolling_30d_mean"]].T
+    fig_co_heatmap, ax_co_heatmap = plt.subplots(figsize=(14, 3))
+    co_img = ax_co_heatmap.imshow(co_heatmap_values, aspect="auto", cmap="Blues")
+    ax_co_heatmap.set_yticks([0])
+    ax_co_heatmap.set_yticklabels(["CO 30d Mean (ppm)"])
+    ax_co_heatmap.set_xticks(range(len(monthly_df["Date"])))
+    ax_co_heatmap.set_xticklabels(monthly_df["Date"], rotation=45, ha="right")
+    ax_co_heatmap.set_title("Kansas City Air Quality: Monthly CO 30-Day Rolling Mean")
+    fig_co_heatmap.colorbar(co_img, ax=ax_co_heatmap, label="CO (ppm)")
+    fig_co_heatmap.tight_layout()
+    fig_co_heatmap.savefig(OUTPUT_CO_HEATMAP_PNG, dpi=300, bbox_inches="tight")
+    LOG.info(f"Saved CO monthly heatmap visualization: {OUTPUT_CO_HEATMAP_PNG}")
 
-        # Add AQI trace
-        fig_plotly.add_trace(
-            go.Scatter(
-                x=dates,
-                y=aqi_values,
-                name="AQI - 30d Mean",
-                line=dict(color="#ff7f0e", width=2.5),
-                yaxis="y2",
-            )
-        )
-
-        # Configure layout with dual Y-axes
-        fig_plotly.update_layout(
-            title="Kansas City Air Quality: 30-Day Rolling Metrics (Interactive)",
-            xaxis=dict(title="Date"),
-            yaxis=dict(
-                title="30-Day Rolling CO Mean (ppm)",
-                titlefont=dict(color="#1f77b4"),
-                tickfont=dict(color="#1f77b4"),
-            ),
-            yaxis2=dict(
-                title="30-Day Rolling AQI Mean",
-                titlefont=dict(color="#ff7f0e"),
-                tickfont=dict(color="#ff7f0e"),
-                anchor="free",
-                overlaying="y",
-                side="right",
-                position=0.99,
-            ),
-            hovermode="x unified",
-            plot_bgcolor="rgba(240,240,240,0.5)",
-            height=700,
-            width=1400,
-        )
-
-        fig_plotly.write_html(OUTPUT_HTML)
-        LOG.info(f"Saved interactive HTML visualization: {OUTPUT_HTML}")
-
-    except ImportError:
-        LOG.warning("Plotly not installed; skipping interactive HTML output.")
+    # AQI heatmap
+    aqi_heatmap_values = monthly_df[["aqi_rolling_30d_mean"]].T
+    fig_aqi_heatmap, ax_aqi_heatmap = plt.subplots(figsize=(14, 3))
+    aqi_img = ax_aqi_heatmap.imshow(aqi_heatmap_values, aspect="auto", cmap="OrRd")
+    ax_aqi_heatmap.set_yticks([0])
+    ax_aqi_heatmap.set_yticklabels(["AQI 30d Mean"])
+    ax_aqi_heatmap.set_xticks(range(len(monthly_df["Date"])))
+    ax_aqi_heatmap.set_xticklabels(monthly_df["Date"], rotation=45, ha="right")
+    ax_aqi_heatmap.set_title("Kansas City Air Quality: Monthly AQI 30-Day Rolling Mean")
+    fig_aqi_heatmap.colorbar(aqi_img, ax=ax_aqi_heatmap, label="AQI")
+    fig_aqi_heatmap.tight_layout()
+    fig_aqi_heatmap.savefig(OUTPUT_AQI_HEATMAP_PNG, dpi=300, bbox_inches="tight")
+    LOG.info(f"Saved AQI monthly heatmap visualization: {OUTPUT_AQI_HEATMAP_PNG}")
 
     LOG.info("========================")
     LOG.info("Visualization complete!")

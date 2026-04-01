@@ -550,3 +550,79 @@ shape: (48, 2)
 2026-04-01 13:54:47 | INFO | P5 | Visualization complete!
 2026-04-01 13:54:47 | INFO | P5 | ========================
 2026-04-01 13:54:47 | INFO | P5 | END main()
+2026-04-01 13:58:17 | INFO | P5 | === RUN START ===
+2026-04-01 13:58:17 | INFO | P5 | project=CINTEL
+2026-04-01 13:58:17 | INFO | P5 | repo_dir=cintel-04-rolling-monitoring
+2026-04-01 13:58:17 | INFO | P5 | python=3.14.2
+2026-04-01 13:58:17 | INFO | P5 | os=Windows 11
+2026-04-01 13:58:17 | INFO | P5 | shell=powershell
+2026-04-01 13:58:17 | INFO | P5 | cwd=.
+2026-04-01 13:58:17 | INFO | P5 | github_actions=False
+2026-04-01 13:58:17 | INFO | P5 | ========================
+2026-04-01 13:58:17 | INFO | P5 | START main()
+2026-04-01 13:58:17 | INFO | P5 | ========================
+2026-04-01 13:58:17 | INFO | P5 | ROOT_DIR = .
+2026-04-01 13:58:17 | INFO | P5 | INPUT_FILE = artifacts\air_quality_rolling_metrics.csv
+2026-04-01 13:58:17 | INFO | P5 | OUTPUT_PNG = artifacts\air_quality_rolling_chart.png
+2026-04-01 13:58:17 | INFO | P5 | OUTPUT_HEATMAP_PNG = artifacts\air_quality_rolling_heatmap.png
+2026-04-01 13:58:17 | INFO | P5 | ARTIFACTS_DIR = artifacts
+2026-04-01 13:58:17 | INFO | P5 | Loaded 163 records from artifact
+2026-04-01 13:58:17 | INFO | P5 | Plotting 134 clean data points from 2023-01-30 00:00:00 to 2023-06-12 00:00:00
+2026-04-01 13:58:18 | INFO | P5 | Saved PNG visualization: C:\Repos\cintel-04-rolling-monitoring\artifacts\air_quality_rolling_chart.png
+2026-04-01 13:58:19 | INFO | P5 | Saved monthly heatmap visualization: C:\Repos\cintel-04-rolling-monitoring\artifacts\air_quality_rolling_heatmap.png
+2026-04-01 13:58:19 | INFO | P5 | ========================
+2026-04-01 13:58:19 | INFO | P5 | Visualization complete!
+2026-04-01 13:58:19 | INFO | P5 | ========================
+2026-04-01 13:58:19 | INFO | P5 | END main()
+2026-04-01 14:00:19 | INFO | P5 | === RUN START ===
+2026-04-01 14:00:19 | INFO | P5 | project=CINTEL
+2026-04-01 14:00:19 | INFO | P5 | repo_dir=cintel-04-rolling-monitoring
+2026-04-01 14:00:19 | INFO | P5 | python=3.14.2
+2026-04-01 14:00:19 | INFO | P5 | os=Windows 11
+2026-04-01 14:00:19 | INFO | P5 | shell=powershell
+2026-04-01 14:00:19 | INFO | P5 | cwd=.
+2026-04-01 14:00:19 | INFO | P5 | github_actions=False
+2026-04-01 14:00:19 | INFO | P5 | ========================
+2026-04-01 14:00:19 | INFO | P5 | START main()
+2026-04-01 14:00:19 | INFO | P5 | ========================
+2026-04-01 14:00:19 | INFO | P5 | ROOT_DIR = .
+2026-04-01 14:00:19 | INFO | P5 | INPUT_FILE = artifacts\air_quality_rolling_metrics.csv
+2026-04-01 14:00:19 | INFO | P5 | OUTPUT_PNG = artifacts\air_quality_rolling_chart.png
+2026-04-01 14:00:19 | INFO | P5 | OUTPUT_CO_HEATMAP_PNG = artifacts\air_quality_co_heatmap.png
+2026-04-01 14:00:19 | INFO | P5 | OUTPUT_AQI_HEATMAP_PNG = artifacts\air_quality_aqi_heatmap.png
+2026-04-01 14:00:19 | INFO | P5 | ARTIFACTS_DIR = artifacts
+2026-04-01 14:00:19 | INFO | P5 | Loaded 163 records from artifact
+2026-04-01 14:00:19 | INFO | P5 | Plotting 134 clean data points from 2023-01-30 00:00:00 to 2023-06-12 00:00:00
+2026-04-01 14:00:20 | INFO | P5 | Saved PNG visualization: C:\Repos\cintel-04-rolling-monitoring\artifacts\air_quality_rolling_chart.png
+2026-04-01 14:00:20 | INFO | P5 | Saved CO monthly heatmap visualization: C:\Repos\cintel-04-rolling-monitoring\artifacts\air_quality_co_heatmap.png
+2026-04-01 14:00:20 | INFO | P5 | Saved AQI monthly heatmap visualization: C:\Repos\cintel-04-rolling-monitoring\artifacts\air_quality_aqi_heatmap.png
+2026-04-01 14:00:20 | INFO | P5 | ========================
+2026-04-01 14:00:20 | INFO | P5 | Visualization complete!
+2026-04-01 14:00:20 | INFO | P5 | ========================
+2026-04-01 14:00:20 | INFO | P5 | END main()
+2026-04-01 14:00:53 | INFO | P5 | === RUN START ===
+2026-04-01 14:00:53 | INFO | P5 | project=CINTEL
+2026-04-01 14:00:53 | INFO | P5 | repo_dir=cintel-04-rolling-monitoring
+2026-04-01 14:00:53 | INFO | P5 | python=3.14.2
+2026-04-01 14:00:53 | INFO | P5 | os=Windows 11
+2026-04-01 14:00:53 | INFO | P5 | shell=powershell
+2026-04-01 14:00:53 | INFO | P5 | cwd=.
+2026-04-01 14:00:53 | INFO | P5 | github_actions=False
+2026-04-01 14:00:53 | INFO | P5 | ========================
+2026-04-01 14:00:53 | INFO | P5 | START main()
+2026-04-01 14:00:53 | INFO | P5 | ========================
+2026-04-01 14:00:53 | INFO | P5 | ROOT_DIR = .
+2026-04-01 14:00:53 | INFO | P5 | INPUT_FILE = artifacts\air_quality_rolling_metrics.csv
+2026-04-01 14:00:53 | INFO | P5 | OUTPUT_PNG = artifacts\air_quality_rolling_chart.png
+2026-04-01 14:00:53 | INFO | P5 | OUTPUT_CO_HEATMAP_PNG = artifacts\air_quality_co_heatmap.png
+2026-04-01 14:00:53 | INFO | P5 | OUTPUT_AQI_HEATMAP_PNG = artifacts\air_quality_aqi_heatmap.png
+2026-04-01 14:00:53 | INFO | P5 | ARTIFACTS_DIR = artifacts
+2026-04-01 14:00:53 | INFO | P5 | Loaded 163 records from artifact
+2026-04-01 14:00:53 | INFO | P5 | Plotting 134 clean data points from 2023-01-30 00:00:00 to 2023-06-12 00:00:00
+2026-04-01 14:00:53 | INFO | P5 | Saved PNG visualization: C:\Repos\cintel-04-rolling-monitoring\artifacts\air_quality_rolling_chart.png
+2026-04-01 14:00:54 | INFO | P5 | Saved CO monthly heatmap visualization: C:\Repos\cintel-04-rolling-monitoring\artifacts\air_quality_co_heatmap.png
+2026-04-01 14:00:54 | INFO | P5 | Saved AQI monthly heatmap visualization: C:\Repos\cintel-04-rolling-monitoring\artifacts\air_quality_aqi_heatmap.png
+2026-04-01 14:00:54 | INFO | P5 | ========================
+2026-04-01 14:00:54 | INFO | P5 | Visualization complete!
+2026-04-01 14:00:54 | INFO | P5 | ========================
+2026-04-01 14:00:54 | INFO | P5 | END main()
