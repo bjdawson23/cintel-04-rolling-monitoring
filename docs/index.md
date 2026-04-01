@@ -65,7 +65,23 @@ Two 30-day rolling metrics were computed to smooth daily variation and reveal tr
 - I first tried a 30-day rolling exceedance count for AQI > 50 and it did not return any valuable insights for this dataset, so I switched it up to use the AQI rolling mean.
 - Regarding the dataset:  It was missing rows (dates), so I added in some sample data to fill those gaps.
 
+
+
+#### Code
+
+**Pipeline script:** `src/cintel/rolling_monitor_dawson_air_quality.py`
+
+- Reads air quality CSV
+- Parses and sorts by date
+- Computes 30-day rolling means for CO and AQI
+- Outputs: `artifacts/air_quality_rolling_metrics.csv`
+
 #### Visualization
+
+**Visual script:** `src/cintel/cintel.visualize_air_quality`
+
+- Reads the rolling metrics artifact
+- Generates dual-axis matplotlib chart (PNG)
 
 A dual-axis line chart displays both metrics together:
 
@@ -78,22 +94,10 @@ Outputs:
 - Static PNG: `artifacts/air_quality_rolling_chart.png`
 ![Air_Quality_Chart](../artifacts/air_quality_rolling_chart.png)
 
-#### Code
-
-**Pipeline script:** `src/cintel/rolling_monitor_dawson_air_quality.py`
-
-- Reads air quality CSV
-- Parses and sorts by date
-- Computes 30-day rolling means for CO and AQI
-- Outputs: `artifacts/air_quality_rolling_metrics.csv`
-
 **Visualization script:** `src/cintel/visualize_air_quality.py`
 ![Air_Quality_Rolling_Chart](../artifacts/air_quality_rolling_chart.png)
 ![CO_heatmap](../artifacts/air_quality_co_heatmap.png)
 ![AQI_heatmap](../artifacts/air_quality_aqi_heatmap.png)
-
-- Reads the rolling metrics artifact
-- Generates dual-axis matplotlib chart (PNG)
 
 #### How to Run
 

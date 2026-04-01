@@ -45,9 +45,9 @@ Phase 5 Custom Project:
    - **Rolling Metrics:** 30-day rolling CO mean and 30-day rolling AQI mean
    - **Pipeline:** `src/cintel/rolling_monitor_dawson_air_quality.py`
    - **Visualization:** `src/cintel/visualize_air_quality.py`
-     ![Air_Quality_Rolling_Chart](../artifacts/air_quality_rolling_chart.png)
-     ![CO_heatmap](../artifacts/air_quality_co_heatmap.png)
-     ![AQI_heatmap](../artifacts/air_quality_aqi_heatmap.png)
+   - ![Air_Quality_Rolling_Chart](../artifacts/air_quality_rolling_chart.png)
+   - ![CO_heatmap](../artifacts/air_quality_co_heatmap.png)
+   - ![AQI_heatmap](../artifacts/air_quality_aqi_heatmap.png)
 
    - Key insight: CO and AQI trends track closely; Feb-Mar 2023 showed peak degradation
 
